@@ -2,21 +2,18 @@
   "name": "sankey",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js",
     "ng": "ng",
+    "start": "node server.js",
     "serve": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "heroku-postbuild": "ng build --prod",
     "prepare": "husky install",
     "lint": "ng lint",
     "lint:fix": "npm run ng lint --fix",
     "lint:scss": "stylelint --fix src/**/*.scss",
     "json:server": " json-server --watch src/backend/db.json"
-  },
-  "engines": {
-    "node": "14.16.0",
-    "npm": "6.14.11"
   },
   "private": true,
   "dependencies": {
@@ -88,5 +85,9 @@
       "prettier --write",
       "eslint --fix"
     ]
+  },
+  "engines": {
+    "node": "14.16.0",
+    "npm": "6.14.11"
   }
 }
