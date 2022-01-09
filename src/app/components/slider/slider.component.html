@@ -1,0 +1,86 @@
+<div (window:resize)="onResize()" class="container">
+  <div class="switch">
+    <span
+      (click)="setSwitch(1)"
+      [ngClass]="switchItem === 1 ? 'switch__item_active switch__item' : 'switch__item'"
+    >
+      Все года
+    </span>
+
+    <span
+      (click)="setSwitch(2)"
+      [ngClass]="switchItem === 2 ? 'switch__item_active switch__item' : 'switch__item'"
+    >
+      Месяца
+    </span>
+    <span
+      (click)="setSwitch(3)"
+      [ngClass]="switchItem === 3 ? 'switch__item_active switch__item' : 'switch__item'"
+    >
+      Кварталы
+    </span>
+  </div>
+  <div class="slider">
+    <app-slider-label [value]="sliderFirst.value" [sliderPoint]="sliderFirst"></app-slider-label>
+    <app-slider-label [value]="sliderSecond.value" [sliderPoint]="sliderSecond"></app-slider-label>
+
+    <div class="slider__track"></div>
+
+    <div
+      class="slider__track_color slider__track"
+      [ngStyle]="{
+        'margin-left': sliderFirst.position + '%',
+        'margin-right': 100 - sliderSecond.position + '%'
+      }"
+    ></div>
+
+    <input
+      (input)="changeSliderPosition($event, 1)"
+      type="range"
+      value="{{ sliderFirst.value }}"
+      class="slider__item"
+    />
+    <input
+      (input)="changeSliderPosition($event, 2)"
+      type="range"
+      class="slider__item"
+      value="{{ end }}"
+    />
+
+    <div class="slider__years" [ngSwitch]="switchItem">
+      <ng-container *ngSwitchCase="1">
+        <div class="slider__year_light" *ngFor="let year of years">{{ year }}</div>
+        <div class="slider__year_light">{{ lastYear }}</div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="2">
+        <div class="slider__year" *ngFor="let year of years">
+          {{ year }}
+          <div
+            class="slider__month slider__year slider__year_light"
+            [ngClass]="isHiddenMonths && isHiddenMonthsLater ? 'display_none' : 'display_show'"
+          >
+            <div class="slider__month-item" *ngFor="let item of months.slice(1)">
+              <div *ngIf="isHiddenMonthsLater">{{ item.slice(0, 1) }}</div>
+              <div *ngIf="!isHiddenMonthsLater">{{ item.slice(0, 3) }}</div>
+            </div>
+          </div>
+        </div>
+        <div>{{ lastYear }}</div></ng-container
+      >
+      <ng-container *ngSwitchCase="3">
+        <div class="slider__year" *ngFor="let year of years">
+          {{ year }}
+          <div
+            class="slider__quarter slider__year slider__year_light"
+            [ngClass]="isHiddenQuarters ? 'display_none' : 'display_show'"
+          >
+            <div *ngFor="let item of quarters">{{ item }}</div>
+          </div>
+        </div>
+        <div>{{ lastYear }}</div>
+      </ng-container>
+    </div>
+    <div class="display-none slider__years block-width"></div>
+  </div>
+</div>

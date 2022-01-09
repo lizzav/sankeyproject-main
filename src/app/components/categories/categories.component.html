@@ -1,0 +1,13 @@
+<div class="categories">
+  <div class="categories__icon" *ngFor="let category of categories; let i = index">
+    <mat-icon [inline]="true" class="categories__pointer" (click)="offsetCategories(i, false)"
+      >keyboard_arrow_left</mat-icon
+    >
+    <span class="categories__text">Категория </span>
+    <span>{{ category }} </span>
+    <mat-icon [inline]="true" class="categories__pointer" (click)="offsetCategories(i, true)"
+      >keyboard_arrow_right</mat-icon
+    >
+  </div>
+</div>
+<app-sankey [data]="dataWithFilter" [sections]="sections"></app-sankey>

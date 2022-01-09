@@ -1,0 +1,8 @@
+.angular
+.husky
+node_modules
+src/assets/*
+src/environments/*
+src/test.ts
+src/polyfills.ts
+src/app.component.spec.ts

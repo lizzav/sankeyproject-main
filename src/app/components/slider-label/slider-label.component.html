@@ -1,0 +1,11 @@
+<div
+  class="slider-label"
+  [ngClass]="sliderPoint?.isReverse ? 'slider-label__value_reverse' : 'slider-label__value'"
+  [ngStyle]="{
+    left: sliderPoint?.isReverse ? sliderPoint?.position + '%' : sliderPoint?.position + '%',
+    'margin-left': marginLeft
+  }"
+>
+  <div class="slider-label__name-month">{{ months[valueDate.getMonth()] }}</div>
+  <div>{{ valueDate.getFullYear() }}</div>
+</div>

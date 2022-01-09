@@ -1,0 +1,74 @@
+.slider-label {
+  &__value {
+    align-items: center;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgb(14 88 143 / 20%);
+    box-sizing: border-box;
+    color: #0167b3;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin-top: -2rem;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+
+    @media (max-width: 600px) {
+      margin-top: -5rem;
+    }
+
+    & ::after {
+      border: solid transparent;
+      border-top-color: #fff;
+      border-width: 6px;
+      content: "";
+      height: 0;
+      left: 50%;
+      margin-left: -6px;
+      pointer-events: none;
+      position: absolute;
+      top: 100%;
+      width: 0;
+    }
+
+    &_reverse {
+      align-items: center;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgb(14 88 143 / 20%);
+      box-sizing: border-box;
+      color: #0167b3;
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+      margin-top: 4rem;
+      padding: 1rem;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+
+      @media (max-width: 600px) {
+        margin-top: 1rem;
+      }
+
+      &::before {
+        border: solid transparent;
+        border-bottom-color: #fff;
+        border-width: 6px;
+        bottom: 100%;
+        content: "";
+        height: 0;
+        left: 50%;
+        margin-left: -6px;
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+      }
+    }
+  }
+
+  &__name-month::first-letter {
+    text-transform: uppercase;
+  }
+}
